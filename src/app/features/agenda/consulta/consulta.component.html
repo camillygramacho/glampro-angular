@@ -1,0 +1,84 @@
+<div class="container">
+  <h2>Agendamento de Serviços</h2>
+
+  <!-- Filtros -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Filtros</h5>
+      <form class="row g-3">
+        <div class="col-md-4">
+          <label for="profissional">Profissional:</label>
+          <select
+            class="form-select"
+            [(ngModel)]="profissionalSelecionado"
+            name="profissional"
+            id="profissional"
+          >
+            <option [ngValue]="null">Selecione um profissional</option>
+            <option
+              *ngFor="let profissional of profissionais"
+              [ngValue]="profissional"
+            >
+              {{ profissional.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="servico">Serviço:</label>
+          <select
+            class="form-select"
+            [(ngModel)]="servicoSelecionado"
+            name="servico"
+            id="servico"
+          >
+            <option [ngValue]="null">Selecione um serviço</option>
+            <option *ngFor="let servico of serviceOptions" [ngValue]="servico">
+              {{ servico }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end justify-content-end">
+          <button type="button" class="btn btn-primary" (click)="buscarAgendamentos()">
+            🔍 Buscar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Resultados -->
+  <div *ngIf="agendamentos.length > 0">
+    <h5>Agendamentos Disponíveis:</h5>
+    <div class="row">
+      <div *ngFor="let agendamento of agendamentos; let i = index" class="col-md-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [(ngModel)]="agendamentoSelecionado[i]"
+                name="selecionado{{ i }}"
+                id="selecionado{{ i }}"
+              />
+              <label class="form-check-label fw-bold" for="selecionado{{ i }}">
+                Selecionar
+              </label>
+            </div>
+            <p><strong>Profissional:</strong> {{ agendamento.name }}</p>
+            <p><strong>Cidade:</strong> {{ agendamento.city }}</p>
+            <p><strong>Data/Hora:</strong> {{ agendamento.dateScheduling }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-success mt-3" (click)="confirmarAgendamento()">✅ Agendar</button>
+  </div>
+
+  <div *ngIf="agendamentos.length === 0 && buscou">
+    <p class="text-muted">Nenhum agendamento encontrado com os filtros selecionados.</p>
+  </div>
+</div>

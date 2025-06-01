@@ -1,0 +1,25 @@
+body {
+  background-color: #e5d1b8; /* Marrom pastel suave */
+}
+.home-container {
+  background: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=2074&q=80') no-repeat center center;
+  background-size: cover;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.carousel-custom {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.carousel-custom img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.bg-marrom-pastel {
+  background-color: #e5d1b8; /* Marrom pastel suave */
+}

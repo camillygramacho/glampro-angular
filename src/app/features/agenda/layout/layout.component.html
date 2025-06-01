@@ -1,0 +1,26 @@
+<!-- features/agenda/layout/layout.component.html -->
+<div class="d-flex vh-100">
+  <!-- Sidebar -->
+  <div class="bg-dark text-white p-3" style="width: 250px;">
+    <h5>📅 Agendamento</h5>
+    <hr />
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="cadastro" routerLinkActive="active">Cadastro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="consulta" routerLinkActive="active">Agendar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="consulta" routerLinkActive="active">Meus agendamentos</a>
+      </li>
+    </ul>
+    <button class="btn btn-secondary mt-3" routerLink="/dashboard">⬅ Voltar</button>
+  </div>
+
+  <!-- Conteúdo da rota -->
+  <div class="flex-grow-1 p-3 overflow-auto">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

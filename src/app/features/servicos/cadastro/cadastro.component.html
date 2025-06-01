@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <h2>Cadastro de Serviço</h2>
+  <form [formGroup]="form" (ngSubmit)="cadastrar()">
+    <div class="mb-3" style="width: 50%;">
+      <label for="nameService" class="form-label">Nome do Serviço</label>
+      <select
+        id="nameService"
+        class="form-select"
+        formControlName="nameService"
+        [disabled]="loading"
+      >
+        <option value="" disabled selected>Selecione um serviço</option>
+        <option *ngFor="let option of serviceOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3" style="width: 50%;">
+      <label for="valueService" class="form-label">Valor do Serviço</label>
+      <input
+            id="valueService"
+            type="number"
+            class="form-control"
+            formControlName="valueService"
+            [disabled]="loading"
+            step="0.01"
+            min="0"
+            placeholder="0,00"
+        />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="loading || form.invalid">
+      {{ loading ? 'Salvando...' : 'Cadastrar' }}
+    </button>
+  </form>
+</div>

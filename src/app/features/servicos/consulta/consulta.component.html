@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <h2>Consulta de Serviços</h2>
+
+  <form [formGroup]="form" (ngSubmit)="consultar()" class="mb-3">
+    <div class="form-group" style="width: 50%;">
+      <label for="profissional">Nome do Profissional</label>
+      <select
+        id="profissional"
+        class="form-control"
+        formControlName="profissional"
+      >
+        <option value="">Selecione um profissional</option>
+        <option *ngFor="let prof of profissionais" [value]="prof.email">
+          {{ prof.name }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2" [disabled]="loading">
+      {{ loading ? 'Consultando...' : 'Consultar' }}
+    </button>
+  </form>
+
+  <div *ngIf="resultados.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Profissional</th>
+          <th>Serviço</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of resultados">
+          <td>{{ item.nameService }}</td>
+          <td>{{ item.valueService | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && resultados.length === 0">
+    <p>Nenhum serviço encontrado.</p>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h3 class="text-center mb-4">Cadastro</h3>
+  <form (ngSubmit)="cadastrar()">
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input [(ngModel)]="nome" name="nome" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">E-mail</label>
+      <input [(ngModel)]="email" name="email" type="email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">CPF</label>
+      <input [(ngModel)]="cpf" name="cpf" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Senha</label>
+      <input [(ngModel)]="senha" name="senha" type="password" class="form-control" required />
+    </div>
+    <div class="form-check mb-2">
+      <input [(ngModel)]="isClient" name="isClient" type="checkbox" class="form-check-input" id="clientCheck">
+      <label class="form-check-label" for="clientCheck">Sou Cliente</label>
+    </div>
+    <div class="form-check mb-3">
+      <input [(ngModel)]="isProfessional" name="isProfessional" type="checkbox" class="form-check-input" id="professionalCheck">
+      <label class="form-check-label" for="professionalCheck">Sou Profissional</label>
+    </div>
+    <button type="submit" class="btn btn-success w-100" [disabled]="loading">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      {{ loading ? 'Cadastrando...' : 'Cadastrar' }}
+    </button>
+   
+  </form>
+  <div class="text-center mt-3">
+    <a routerLink="/login">Já tem conta? Faça login</a>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<!-- Fundo com imagem -->
+<div class="position-relative text-white" style="min-height: 100vh;">
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" 
+       style="background-image: url('/assets/salao.jpeg'); background-size: cover; background-position: center; opacity: 0.4; z-index: 0;">
+  </div>
+
+  <!-- Conteúdo acima do fundo -->
+  <div class="position-relative z-1 container py-5">
+    <h1 class="text-center mb-4 fw-bold">✨ Glam Pro ✨</h1>
+
+    <div id="carouselCards" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+
+            <div class="col-md-4">
+              <a routerLink="/agenda" class="text-white text-decoration-none">
+                <div class="card text-bg-dark text-center">
+                  <img src="/assets/agenda.jpg" class="card-img-top" alt="Agendamento">
+                  <div class="card-body">
+                    <h5 class="card-title">📅 Agendamento</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4">
+              <a routerLink="/servico" class="text-white text-decoration-none">
+                <div class="card text-bg-dark text-center">
+                  <img src="/assets/servicos3.jpg" class="card-img-top" alt="Serviços">
+                  <div class="card-body">
+                    <h5 class="card-title">💇 Serviços</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4">
+              <a routerLink="/perfil" class="text-white text-decoration-none">
+                <div class="card text-bg-dark text-center">
+                  <img src="/assets/perfil.jpg" class="card-img-top" alt="Perfil">
+                  <div class="card-body">
+                    <h5 class="card-title">👤 Perfil</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+
+            <div class="col-md-4">
+              <a routerLink="/clientes" class="text-white text-decoration-none">
+                <div class="card text-bg-dark text-center">
+                  <img src="/assets/cliente.jpg" class="card-img-top" alt="Clientes">
+                  <div class="card-body">
+                    <h5 class="card-title">🧍 Clientes</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4">
+              <a routerLink="/profissionais" class="text-white text-decoration-none">
+                <div class="card text-bg-dark text-center">
+                  <img src="/assets/profissionais.jpg" class="card-img-top" alt="Profissionais">
+                  <div class="card-body">
+                    <h5 class="card-title">💇‍♂️ Profissionais</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4">
+              <a routerLink="/suporte" class="text-white text-decoration-none">
+                <div class="card text-bg-dark text-center">
+                  <img src="/assets/suportes.jpeg" class="card-img-top" alt="Suporte">
+                  <div class="card-body">
+                    <h5 class="card-title">🛠 Suporte</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controles -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselCards" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselCards" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-danger" (click)="logout()">Sair</button>
+    </div>
+  </div>
+</div>
