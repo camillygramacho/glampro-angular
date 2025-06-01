@@ -24,7 +24,6 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Profissional</th>
           <th>Serviço</th>
           <th>Valor</th>
         </tr>
@@ -32,7 +31,7 @@
       <tbody>
         <tr *ngFor="let item of resultados">
           <td>{{ item.nameService }}</td>
-          <td>{{ item.valueService | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+          <td>{{ item.valueService  }}</td>
         </tr>
       </tbody>
     </table>
