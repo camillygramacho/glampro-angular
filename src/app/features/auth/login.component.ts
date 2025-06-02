@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-login',
   imports: [CommonModule, FormsModule, RouterModule, HttpClientModule],
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   email = '';

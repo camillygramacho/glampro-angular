@@ -5,4 +5,5 @@ export interface RegisterRequest {
   password: string;
   isClient: boolean;
   isProfessional: boolean;
+  isCompany:boolean;
 }

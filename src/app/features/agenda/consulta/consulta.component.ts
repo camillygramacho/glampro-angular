@@ -37,7 +37,6 @@ export class ConsultaComponent implements OnInit {
   ];
 
   constructor(
-    private servicesService: ServicesService,
     private schedulingService: SchedulingService,
     private userService: UserService
   ) {}
@@ -65,8 +64,9 @@ export class ConsultaComponent implements OnInit {
     }
 
     if (!this.servicoSelecionado) {
-      alert('Selecione um serviço.');
-      return;
+      this.servicoSelecionado = "";
+      //alert('Selecione um serviço.');
+     // return;
     }
 
     this.loading = true;
@@ -99,15 +99,24 @@ export class ConsultaComponent implements OnInit {
       return;
     }
 
-    const emailUsuario = localStorage.getItem('username');
-    if (!emailUsuario) {
+    const emailUserLogin = localStorage.getItem('username');
+    if (!emailUserLogin) {
       alert('Usuário não autenticado.');
       return;
     }
 
+    // Verifica se há algum agendamento com email igual ao do usuário logado
+    const existeConflito = agendamentosSelecionados.some(agendamento => agendamento.email === emailUserLogin);
+
+    if (existeConflito) {
+      alert('Você não pode agendar um serviço que você mesmo cadastrou!');
+      return;
+    }
+
     const payload = agendamentosSelecionados.map((agendamento) => ({
-      emailUsuario,
-      idServiceSalon: agendamento.idServiceSalon,
+      emailUserLogin,
+      idServiceSalon: agendamento.id,
+      emailProfessional: agendamento.email
     }));
 
     this.loading = true;

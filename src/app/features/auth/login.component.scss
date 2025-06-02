@@ -1,7 +1,7 @@
 /* login.component.scss */
 .login-background {
   /* Caminho até a imagem no assets */
-  background-image: url('/assets/fundo1.jpeg');
+  background-image: url('/assets/logintela.jpeg');
   background-size: cover;         /* Ajusta para cobrir toda a área */
   background-position: center;    /* Centraliza a imagem */
   background-repeat: no-repeat;   /* Não repete */
@@ -23,7 +23,7 @@
 .login-background .container {
   position: relative;
   z-index: 1; /* Faz com que o formulário apareça acima do overlay */
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 8px;
   padding: 2rem;
 }

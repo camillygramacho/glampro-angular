@@ -18,18 +18,27 @@ export class SchedulingService {
     return this.http.post(this.apiUrl, data, { headers });
   }
 
-buscarAgendamentosDisponiveis(emailProfissional: string, nomeServico: string): Observable<any[]> {
-  const params = {
+  buscarAgendamentosDisponiveis(emailProfissional: string, nomeServico: string): Observable<any[]> {
+    const params = {
     email: emailProfissional,
     nameService: nomeServico
   };
+    return this.http.get<any[]>(`${this.apiUrl}`, { params });
+  }
 
-  return this.http.get<any[]>(`${this.apiUrl}`, { params });
-}
+  getAgendamentosByAppointmentDone(emailProfissional: string, nomeServico: string): Observable<any[]> {
+    const params = {
+      emailProfessional: emailProfissional,
+      nameService: nomeServico
+    };
+    const emailLogin = localStorage.getItem('username');
+    const headers = new HttpHeaders().set('emailLogin', emailLogin || '');
+    return this.http.get<any[]>(`${this.apiUrl+'/appointmentDone'}`, { params, headers });
+  }
 
   confirmarAgendamentos(data: any[]): Observable<any> {
-    const email = localStorage.getItem('username');
-    const headers = new HttpHeaders().set('email', email || '');
-    return this.http.post(this.apiUrl, data, { headers });
+    return this.http.patch(this.apiUrl, data);
   }
+
+
 }

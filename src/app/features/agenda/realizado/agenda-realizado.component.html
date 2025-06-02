@@ -1,0 +1,81 @@
+<div class="container">
+  <h2>Meus Agendamentos Realizados</h2>
+
+  <!-- Filtros -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Filtros</h5>
+      <form class="row g-3">
+        <div class="col-md-4">
+          <label for="profissional">Empresa/Profissional:</label>
+          <select
+            class="form-select"
+            [(ngModel)]="profissionalSelecionado"
+            name="profissional"
+            id="profissional"
+          >
+            <option [ngValue]="null">Todos os profissionais</option>
+            <option
+              *ngFor="let profissional of profissionais"
+              [ngValue]="profissional"
+            >
+              {{ profissional.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="servico">Serviço:</label>
+          <select
+            class="form-select"
+            [(ngModel)]="servicoSelecionado"
+            name="servico"
+            id="servico"
+          >
+            <option [ngValue]="null">Todos os serviços</option>
+            <option *ngFor="let servico of serviceOptions" [ngValue]="servico">
+              {{ servico }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end justify-content-end">
+          <button type="button" class="btn btn-primary" (click)="buscarAgendamentos()">
+            🔍 Buscar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Resultados -->
+  <div *ngIf="agendamentos.length > 0">
+    <h5>Agendamentos Realizados:</h5>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>Profissional</th>
+            <th>Serviço</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Cidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ag of agendamentos">
+            <td>{{ ag.name }}</td>
+            <td>{{ ag.nameService }}</td>
+            <td>{{ ag.date }}</td>
+            <td>{{ ag.time }}</td>
+            <td>{{ ag.city }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="agendamentos.length === 0 && buscou">
+    <p class="text-muted">Nenhum agendamento realizado encontrado com os filtros selecionados.</p>
+  </div>
+</div>

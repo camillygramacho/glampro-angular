@@ -15,6 +15,7 @@ import { ConsultaComponent as ServicoConsultaComponent } from './features/servic
 import { HomeComponent } from './features/home/home.component';
 import { LayoutComponent } from './features/agenda/layout/layout.component';
 import { ServicoLayoutComponent } from './features/servicos/servico-layout/servico-layout.component';
+import { AgendaRealizadoComponent } from './features/agenda/realizado/agenda-realizado.component';
 
 
 export const routes: Routes = [
@@ -35,6 +36,7 @@ export const routes: Routes = [
     children: [
       { path: 'cadastro', component: AgendaCadastroComponent },
       { path: 'consulta', component: AgendaConsultaComponent },
+      { path: 'agendados', component: AgendaRealizadoComponent },
       { path: '', redirectTo: 'consulta', pathMatch: 'full' }
     ]
   },
