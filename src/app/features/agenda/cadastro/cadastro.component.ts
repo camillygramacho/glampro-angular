@@ -63,6 +63,8 @@ export class CadastroComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
+
     const agendamentosPayload = this.agendamentos.map((item) => ({
       idServiceSalon: item.idServiceSalon,
       dateTimeAvailable: this.formatDateTime(item.data, item.hora),
@@ -77,6 +79,9 @@ export class CadastroComponent implements OnInit {
         alert('Erro ao salvar agendamentos: ' + (err.error?.message || 'Erro desconhecido'));
         console.error(err);
       },
+      complete: () => {
+      this.loading = false;
+    },
     });
   }
 }

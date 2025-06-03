@@ -77,7 +77,14 @@
       </div>
     </div>
 
-    <button class="btn btn-success mt-3" (click)="confirmarAgendamento()">✅ Agendar</button>
+    <button
+      class="btn btn-success mt-3"
+      [disabled]="loading"
+      (click)="confirmarAgendamento()"
+    >
+      <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      {{ loading ? 'Salvando...' : '✅ Agendar' }}
+    </button>
   </div>
 
   <div *ngIf="agendamentos.length === 0 && buscou">

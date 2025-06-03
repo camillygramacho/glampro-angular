@@ -47,10 +47,11 @@
 
     <button
       class="btn btn-success"
-      [disabled]="agendamentos.length === 0 || !todosValidos()"
+      [disabled]="loading || agendamentos.length === 0 || !todosValidos()"
       (click)="salvarAgendamentos()"
     >
-      💾 Salvar Todos
+      <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      {{ loading ? 'Salvando...' : '💾 Salvar Todos' }}
     </button>
   </div>
 </div>

@@ -5,7 +5,7 @@
     <h5>📅 Agendamento</h5>
     <hr />
     <ul class="nav flex-column">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isCliente">
         <a class="nav-link text-white" routerLink="cadastro" routerLinkActive="active">Cadastro</a>
       </li>
       <li class="nav-item">
@@ -13,6 +13,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" routerLink="agendados" routerLinkActive="active">Meus agendamentos</a>
+      </li>
+      <li class="nav-item" *ngIf="!isCliente">
+        <a class="nav-link text-white" routerLink="clientesAgendados" routerLinkActive="active">Cliente agendados</a>
       </li>
     </ul>
     <button class="btn btn-secondary mt-3" routerLink="/dashboard">⬅ Voltar</button>

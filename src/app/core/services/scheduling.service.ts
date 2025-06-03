@@ -36,6 +36,12 @@ export class SchedulingService {
     return this.http.get<any[]>(`${this.apiUrl+'/appointmentDone'}`, { params, headers });
   }
 
+  getAgendamentosByProfessioanl(): Observable<any[]> {
+     const emailLogin = localStorage.getItem('username');
+    const headers = new HttpHeaders().set('emailLogin', emailLogin || '');
+    return this.http.get<any[]>(`${this.apiUrl+'/clientsScheduling'}`, { headers });
+  }
+
   confirmarAgendamentos(data: any[]): Observable<any> {
     return this.http.patch(this.apiUrl, data);
   }

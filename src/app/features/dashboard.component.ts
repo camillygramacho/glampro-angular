@@ -10,9 +10,19 @@ import { AuthService } from '../core/services/auth.service';
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
+  isCliente = false;
   constructor(private authService: AuthService,
     private router: Router,
   ) {}
+
+    navegarParaServico() {
+    const roles = this.authService.getRoles();
+    if (roles.includes('ROLE_CLIENT')) {
+      alert('Acesso negado: apenas profissionais podem acessar a área de serviços.');
+    } else {
+      this.router.navigate(['/servico']);
+    }
+  }
 
   logout() {
     this.authService.logout();
